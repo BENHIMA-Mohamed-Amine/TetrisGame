@@ -6,7 +6,6 @@
 mingw32-make -f ./MakeFile
 ```
 
-<br>
 **In VsCode Terminal, execute the following command:**
 
 ```bash
