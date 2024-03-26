@@ -1,2 +1,2 @@
 all:
-	g++ -Iinclude/SDL2 -Iinclude/ -Iinclude/headers -Llib -o Tetrise src/*.cpp -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
+	g++ -Iinclude/SDL2 -Iinclude/headers/ -Iinclude/headers -Llib -o Tetrise src/*.cpp -lmingw32 -lSDL2main -lSDL2 -lSDL2_image

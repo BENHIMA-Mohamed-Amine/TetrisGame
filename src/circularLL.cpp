@@ -157,16 +157,16 @@ void CircularLinkedList<T>::display() {
         switch (objectShape)
         {
         case 0: // Rectangle
-            buffer.append("■"); // ■
+            buffer.append("A"); // ■
             break;
         case 1: // Circle
-            buffer.append("●"); // ●
+            buffer.append("B"); // ●
             break;
         case 2: // Triangle
-            buffer.append("▲"); // ▲
+            buffer.append("C"); // ▲
             break;
         case 3: // Diamond
-            buffer.append("◆"); // ◆
+            buffer.append("D"); // ◆
             break;
         
         default:
