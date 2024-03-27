@@ -26,13 +26,11 @@ int main(int argc, char* argv[]) {
 
                     case 75: // Left arrow key
                         shapeList.addRight(Object::random());
-                        shapeList.removeLeft();
 
                         break;
 
                     case 77: // Right arrow key
                         shapeList.addLeft(Object::random());
-                        shapeList.removeRight();
 
                         break;
 

@@ -72,11 +72,6 @@ void ShapeList<T>::checkIdenticalShapes() {
             list.removeNode(obj2);
             list.removeNode(obj3);
 
-            // Add 3 Objects as replacement
-            addRight(Object::random());
-            addRight(Object::random());
-            addRight(Object::random());
-
             // Increment Score
             score++;
 
