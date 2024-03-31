@@ -5,6 +5,8 @@
 #include <vector>
 
 
+
+
 template <typename T>
 ShapeList<T>::ShapeList() {
     score = 0;
@@ -16,6 +18,8 @@ ShapeList<T>::ShapeList() {
     addRight(Object::random());
     addRight(Object::random());
     addRight(Object::random());
+
+
 
 }
 
