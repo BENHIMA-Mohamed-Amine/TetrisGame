@@ -3,6 +3,7 @@
 
 #include "utils/CircularLL.hpp"
 #include "ShapeObject.hpp"
+#include <vector>
 
 template <typename T>
 class ShapeList
@@ -22,6 +23,7 @@ public:
     void display();
     void shiftColor(COLOR targetColor);
     void shiftShape(SHAPE targetShape);
+    std::vector<Object> getArray();
 };
 
 #endif

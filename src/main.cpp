@@ -10,68 +10,77 @@
 int main(int argc, char* argv[]) {
     ShapeList<Object> shapeList;
 
-    while (true) {
-        system("cls");
-        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
-        shapeList.display();
-
-        if (_kbhit()) {
-            char ch = _getch();
-            if (ch == 'x') {
-                break;
-            } else {
-                ch = _getch();
-
-                switch (ch) {
-
-                    case 75: // Left arrow key
-                        shapeList.addRight(Object::random());
-
-                        break;
-
-                    case 77: // Right arrow key
-                        shapeList.addLeft(Object::random());
-
-                        break;
-
-
-                    case 'q':
-                        shapeList.shiftColor(RED);
-                        break;
-                    case 'w':
-                        shapeList.shiftColor(GREEN);
-                        break;
-                    case 'e':
-                        shapeList.shiftColor(BLUE);
-                        break;
-                    case 'r':
-                        shapeList.shiftColor(YELLOW);
-                        break;
-                    case 'a':
-                        shapeList.shiftShape(RECTANGLE);
-                        break;
-                    case 's':
-                        shapeList.shiftShape(CIRCLE);
-                        break;
-                    case 'd':
-                        shapeList.shiftShape(TRIANGLE);
-                        break;
-                    case 'f':
-                        shapeList.shiftShape(DIAMOND);
-                        break;
-
-
-                    default:
-                        continue;
-                    
-                    }
-
-
-            }
-        }
+    // Prints all objects of shapeList
+    for (Object elem : shapeList.getArray()) {
+        std::cout << "Shape: " << elem.getShape() << std::endl;
+        std::cout << "Color: " << elem.getColor() << std::endl << std::endl;
     }
+    
 
-    // Initialize SDL
+
+    // while (true) {
+    //     system("cls");
+    //     shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
+    //     shapeList.display();
+
+
+    //     if (_kbhit()) {
+    //         char ch = _getch();
+    //         if (ch == 'x') {
+    //             break;
+    //         } else {
+    //             ch = _getch();
+
+    //             switch (ch) {
+
+    //                 case 75: // Left arrow key
+    //                     shapeList.addRight(Object::random());
+
+    //                     break;
+
+    //                 case 77: // Right arrow key
+    //                     shapeList.addLeft(Object::random());
+
+    //                     break;
+
+
+    //                 case 'q':
+    //                     shapeList.shiftColor(RED);
+    //                     break;
+    //                 case 'w':
+    //                     shapeList.shiftColor(GREEN);
+    //                     break;
+    //                 case 'e':
+    //                     shapeList.shiftColor(BLUE);
+    //                     break;
+    //                 case 'r':
+    //                     shapeList.shiftColor(YELLOW);
+    //                     break;
+    //                 case 'a':
+    //                     shapeList.shiftShape(RECTANGLE);
+    //                     break;
+    //                 case 's':
+    //                     shapeList.shiftShape(CIRCLE);
+    //                     break;
+    //                 case 'd':
+    //                     shapeList.shiftShape(TRIANGLE);
+    //                     break;
+    //                 case 'f':
+    //                     shapeList.shiftShape(DIAMOND);
+    //                     break;
+
+
+    //                 default:
+    //                     continue;
+                    
+    //                 }
+
+
+    //         }
+    //     }
+    // }
+
+    // // Initialize SDL
     // if (SDL_Init(SDL_INIT_VIDEO) != 0) {
     //     fprintf(stderr, "Error initializing SDL: %s\n", SDL_GetError());
     //     return 1;

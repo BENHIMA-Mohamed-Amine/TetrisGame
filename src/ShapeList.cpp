@@ -2,18 +2,20 @@
 #include "ShapeList.hpp"
 #include "utils/CircularLL.hpp"
 #include "ShapeObject.hpp"
+#include <vector>
+
 
 template <typename T>
 ShapeList<T>::ShapeList() {
-    // Creating 6 Objects and Adding them to list
     score = 0;
 
-    list.addRight(Object::random());
-    list.addRight(Object::random());
-    list.addRight(Object::random());
-    list.addRight(Object::random());
-    list.addRight(Object::random());
-    list.addRight(Object::random());
+    // Creating 6 Objects and Adding them to list
+    addRight(Object::random());
+    addRight(Object::random());
+    addRight(Object::random());
+    addRight(Object::random());
+    addRight(Object::random());
+    addRight(Object::random());
 
 }
 
@@ -90,7 +92,7 @@ void ShapeList<T>::addLeft(Object* obj) {
 
 template <typename T>
 void ShapeList<T>::addRight(Object* obj) {
-    list.addRight(obj);
+    list.addRight(obj);    
 }
 
 template <typename T>
@@ -146,6 +148,18 @@ void ShapeList<T>::shiftShape(SHAPE targetShape) {
         prevShape = currShape;
         temp = temp->next;
     } while(temp != ShapeList->head);
+}
+
+template <typename T>
+std::vector<Object> ShapeList<T>::getArray() {
+    std::vector<Object> objList;
+    Node<Object>* temp = list.head;
+    do {
+        objList.push_back(*(temp->data));
+        temp = temp->next;
+    } while(temp!=list.head);
+
+    return objList;
 }
 
 // Explicit instantiation for ShapeList<Object>

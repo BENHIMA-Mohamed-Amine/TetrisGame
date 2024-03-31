@@ -1,8 +1,6 @@
 #ifndef CIRCULARLL_HPP
 #define CIRCULARLL_HPP
 
-#include "ShapeObject.hpp"
-
 template <typename T>
 class Node {
 public:

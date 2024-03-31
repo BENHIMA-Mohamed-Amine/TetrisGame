@@ -1,6 +1,7 @@
 #include <iostream>
 #include "utils/Colors.hpp"
 #include "utils/CircularLL.hpp"
+#include "ShapeObject.hpp"
 
 template <typename T>
 Node<T>::Node(T* value) : data(value), next(nullptr), prev(nullptr) {}
@@ -157,16 +158,16 @@ void CircularLinkedList<T>::display() {
         switch (objectShape)
         {
         case 0: // Rectangle
-            buffer.append("A"); // ■
+            buffer.append("■"); // ■
             break;
         case 1: // Circle
-            buffer.append("B"); // ●
+            buffer.append("●"); // ●
             break;
         case 2: // Triangle
-            buffer.append("C"); // ▲
+            buffer.append("▲"); // ▲
             break;
         case 3: // Diamond
-            buffer.append("D"); // ◆
+            buffer.append("◆"); // ◆
             break;
         
         default:
