@@ -6,132 +6,113 @@
 #include "ShapeObject.hpp"
 #include "ShapeList.hpp"
 #include <conio.h>
+#include "RenderWindow.hpp"
+using namespace std;
+
+#define SCREEN_WIDTH 900
+#define SCREEN_HEIGHT 600
 
 int main(int argc, char* argv[]) {
     ShapeList<Object> shapeList;
+    // while (true) {
+    //     system("cls");
+    //     shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
+    //     shapeList.display();
 
-    while (true) {
-        system("cls");
-        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
-        shapeList.display();
+    //     if (_kbhit()) {
+    //         char ch = _getch();
+    //         if (ch == 'x') {
+    //             break;
+    //         } else {
+    //             ch = _getch();
 
-        if (_kbhit()) {
-            char ch = _getch();
-            if (ch == 'x') {
-                break;
-            } else {
-                ch = _getch();
+    //             switch (ch) {
 
-                switch (ch) {
+    //                 case 75: // Left arrow key
+                        // shapeList.addRight(Object::random());
 
-                    case 75: // Left arrow key
-                        shapeList.addRight(Object::random());
+    //                     break;
 
-                        break;
+    //                 case 77: // Right arrow key
+    //                     shapeList.addLeft(Object::random());
 
-                    case 77: // Right arrow key
-                        shapeList.addLeft(Object::random());
-
-                        break;
-
-
-                    case 'q':
-                        shapeList.shiftColor(RED);
-                        break;
-                    case 'w':
-                        shapeList.shiftColor(GREEN);
-                        break;
-                    case 'e':
-                        shapeList.shiftColor(BLUE);
-                        break;
-                    case 'r':
-                        shapeList.shiftColor(YELLOW);
-                        break;
-                    case 'a':
-                        shapeList.shiftShape(RECTANGLE);
-                        break;
-                    case 's':
-                        shapeList.shiftShape(CIRCLE);
-                        break;
-                    case 'd':
-                        shapeList.shiftShape(TRIANGLE);
-                        break;
-                    case 'f':
-                        shapeList.shiftShape(DIAMOND);
-                        break;
+    //                     break;
 
 
-                    default:
-                        continue;
+    //                 case 'q':
+    //                     shapeList.shiftColor(RED);
+    //                     break;
+    //                 case 'w':
+    //                     shapeList.shiftColor(GREEN);
+    //                     break;
+    //                 case 'e':
+    //                     shapeList.shiftColor(BLUE);
+    //                     break;
+    //                 case 'r':
+    //                     shapeList.shiftColor(YELLOW);
+    //                     break;
+    //                 case 'a':
+    //                     shapeList.shiftShape(RECTANGLE);
+    //                     break;
+    //                 case 's':
+    //                     shapeList.shiftShape(CIRCLE);
+    //                     break;
+    //                 case 'd':
+    //                     shapeList.shiftShape(TRIANGLE);
+    //                     break;
+    //                 case 'f':
+    //                     shapeList.shiftShape(DIAMOND);
+    //                     break;
+
+
+    //                 default:
+    //                     continue;
                     
-                    }
+    //                 }
 
 
-            }
-        }
+    //         }
+    //     }
+    // }
+
+    bool gameIsRunning = true;
+    SDL_Event event;
+
+    if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+    {
+        cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << endl;
+        return EXIT_FAILURE;
+    }
+    if(!IMG_Init( IMG_INIT_PNG ))
+    {
+        cerr << "SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << endl;
+        return EXIT_FAILURE;
     }
 
-    // Initialize SDL
-    // if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-    //     fprintf(stderr, "Error initializing SDL: %s\n", SDL_GetError());
-    //     return 1;
-    // }
+    RenderWindow window("SDL2", SCREEN_WIDTH, SCREEN_HEIGHT);  
+    // SDL_Texture *texture = window.loadTexture("/home/med-amine/Desktop/firstSDLGame/imgs/gc.png");
+    // SDL_TEXTURE textur
+    // vector<Entity> entities = {
+    //     Entity(0, 0, color, shape),
+    //     Entity(50, 50, texture),
+    //     Entity(100, 100, texture)
+    // };
+    // color, shape
 
-    // // Create a window
-    // SDL_Window *window = SDL_CreateWindow("SDL Image Test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN);
-    // if (window == NULL) {
-    //     fprintf(stderr, "Error creating window: %s\n", SDL_GetError());
-    //     SDL_Quit();
-    //     return 1;
-    // }
-
-    // // Create a renderer
-    // SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    // if (renderer == NULL) {
-    //     fprintf(stderr, "Error creating renderer: %s\n", SDL_GetError());
-    //     SDL_DestroyWindow(window);
-    //     SDL_Quit();
-    //     return 1;
-    // }
-
-    // // Load image using SDL_image
-    // SDL_Surface *imageSurface = IMG_Load("C:\\Users\\medab\\Downloads\\SDL 64x Compiler\\SDL 64x Compiler\\ESTs logo.png");
-    // if (imageSurface == NULL) {
-    //     fprintf(stderr, "Error loading image: %s\n", IMG_GetError());
-    //     SDL_DestroyRenderer(renderer);
-    //     SDL_DestroyWindow(window);
-    //     SDL_Quit();
-    //     return 1;
-    // }
-
-    // // Convert surface to texture
-    // SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, imageSurface);
-    // SDL_FreeSurface(imageSurface);
-    // if (texture == NULL) {
-    //     fprintf(stderr, "Error creating texture: %s\n", SDL_GetError());
-    //     SDL_DestroyRenderer(renderer);
-    //     SDL_DestroyWindow(window);
-    //     SDL_Quit();
-    //     return 1;
-    // }
-
-    // // Clear the window
-    // SDL_RenderClear(renderer);
-
-    // // Draw the texture
-    // SDL_RenderCopy(renderer, texture, NULL, NULL);
-
-    // // Update the window
-    // SDL_RenderPresent(renderer);
-
-    // // Wait for 5 seconds
-    // SDL_Delay(5000);
-
-    // // Clean up
-    // SDL_DestroyTexture(texture);
-    // SDL_DestroyRenderer(renderer);
-    // SDL_DestroyWindow(window);
-    // SDL_Quit();
-
-    return 0;
+    while(gameIsRunning){
+        while(SDL_PollEvent(&event)){
+            if(event.type == SDL_QUIT){
+                gameIsRunning = false;
+            }  
+        }
+        // window.clear();
+        // for(Entity& entity : entities){
+        //     window.render(entity);
+        // }
+        // window.display();
+    }
+    // window.cleanUp();
+    IMG_Quit();
+    SDL_Quit(); 
+    return EXIT_SUCCESS;
 }
