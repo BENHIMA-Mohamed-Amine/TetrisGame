@@ -85,21 +85,21 @@ int main(int argc, char* argv[]) {
     //     }
     // }
 
-    bool gameIsRunning = true;
-    SDL_Event event;
+    // bool gameIsRunning = true;
+    // SDL_Event event;
 
-    if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
-    {
-        cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << endl;
-        return EXIT_FAILURE;
-    }
-    if(!IMG_Init( IMG_INIT_PNG ))
-    {
-        cerr << "SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << endl;
-        return EXIT_FAILURE;
-    }
+    // if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+    // {
+    //     cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << endl;
+    //     return EXIT_FAILURE;
+    // }
+    // if(!IMG_Init( IMG_INIT_PNG ))
+    // {
+    //     cerr << "SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << endl;
+    //     return EXIT_FAILURE;
+    // }
 
-    RenderWindow window("SDL2", SCREEN_WIDTH, SCREEN_HEIGHT);  
+    // RenderWindow window("SDL2", SCREEN_WIDTH, SCREEN_HEIGHT);  
     // SDL_Texture *texture = window.loadTexture("/home/med-amine/Desktop/firstSDLGame/imgs/gc.png");
     // SDL_TEXTURE textur
     // vector<Entity> entities = {
@@ -109,20 +109,22 @@ int main(int argc, char* argv[]) {
     // };
     // color, shape
 
-    while(gameIsRunning){
-        while(SDL_PollEvent(&event)){
-            if(event.type == SDL_QUIT){
-                gameIsRunning = false;
-            }  
-        }
+    // while(gameIsRunning){
+    //     while(SDL_PollEvent(&event)){
+    //         if(event.type == SDL_QUIT){
+    //             gameIsRunning = false;
+    //         }  
+    //     }
         // window.clear();
         // for(Entity& entity : entities){
         //     window.render(entity);
         // }
         // window.display();
-    }
+    // }
     // window.cleanUp();
-    IMG_Quit();
-    SDL_Quit(); 
-    return EXIT_SUCCESS;
+    // IMG_Quit();
+    // SDL_Quit(); 
+    // return EXIT_SUCCESS;
+
+    return 0;
 }
