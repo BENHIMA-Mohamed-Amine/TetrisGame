@@ -75,20 +75,12 @@ void ShapeList<T>::checkIdenticalShapesMiddle() {
         if((obj1->data->getColor() == obj2->data->getColor() && obj2->data->getColor() == obj3->data->getColor()) || 
             (obj1->data->getShape() == obj2->data->getShape() && obj2->data->getShape() == obj3->data->getShape()))
         {
-            if(getSize()==3)
-            {
-                // Remove Duplicates
-                list.removeNode(obj1);
-                list.removeNode(obj2);
-                list.removeNode(obj3);
 
-                list.addRight(Object::random());
-            } else {
-                // Remove Duplicates
-                list.removeNode(obj1);
-                list.removeNode(obj2);
-                list.removeNode(obj3);
-            }
+            // Remove Duplicates
+            list.removeNode(obj1);
+            list.removeNode(obj2);
+            list.removeNode(obj3);
+            
 
             // Increment Score
             score++;
@@ -113,20 +105,12 @@ void ShapeList<T>::checkIdenticalShapesLeft() {
     if((obj1->data->getColor() == obj2->data->getColor() && obj2->data->getColor() == obj3->data->getColor()) || 
         (obj1->data->getShape() == obj2->data->getShape() && obj2->data->getShape() == obj3->data->getShape()))
     {
-        if(getSize()==3)
-        {
-            // Remove Duplicates
-            list.removeNode(obj1);
-            list.removeNode(obj2);
-            list.removeNode(obj3);
-
-            list.addRight(Object::random());
-        } else {
-            // Remove Duplicates
-            list.removeNode(obj1);
-            list.removeNode(obj2);
-            list.removeNode(obj3);
-        }
+ 
+        // Remove Duplicates
+        list.removeNode(obj1);
+        list.removeNode(obj2);
+        list.removeNode(obj3);
+        
 
 
         // Increment Score
@@ -151,20 +135,11 @@ void ShapeList<T>::checkIdenticalShapesRight() {
     if((obj1->data->getColor() == obj2->data->getColor() && obj2->data->getColor() == obj3->data->getColor()) || 
         (obj1->data->getShape() == obj2->data->getShape() && obj2->data->getShape() == obj3->data->getShape()))
     {
-        if(getSize()==3)
-        {
-            // Remove Duplicates
-            list.removeNode(obj1);
-            list.removeNode(obj2);
-            list.removeNode(obj3);
-
-            list.addRight(Object::random());
-        } else {
-            // Remove Duplicates
-            list.removeNode(obj1);
-            list.removeNode(obj2);
-            list.removeNode(obj3);
-        }
+        
+        // Remove Duplicates
+        list.removeNode(obj1);
+        list.removeNode(obj2);
+        list.removeNode(obj3);
 
         // Increment Score
         score++;
@@ -178,13 +153,15 @@ void ShapeList<T>::checkIdenticalShapesRight() {
 template <typename T>
 void ShapeList<T>::addLeft(Object* obj) {
     list.addLeft(obj);
-    checkIdenticalShapesLeft();
+    if(getSize()>=3)
+        checkIdenticalShapesLeft();
 }
 
 template <typename T>
 void ShapeList<T>::addRight(Object* obj) {
     list.addRight(obj);
-    checkIdenticalShapesRight();
+    if(getSize()>=3)
+        checkIdenticalShapesRight();
 }
 
 template <typename T>
