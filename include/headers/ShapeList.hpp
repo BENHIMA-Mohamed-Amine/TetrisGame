@@ -13,16 +13,27 @@ public:
     int score;
 
     ShapeList();
+
     CircularLinkedList<Object>* exportColor(COLOR color);
     CircularLinkedList<Object>* exportShape(SHAPE shape);
-    void checkIdenticalShapes();
+
+    void checkIdenticalShapesMiddle();
+    void checkIdenticalShapesLeft();
+    void checkIdenticalShapesRight();
+
     void addLeft(Object* obj);
     void addRight(Object* obj);
     void removeLeft();
     void removeRight();
+    
     void display();
+
     void shiftColor(COLOR targetColor);
     void shiftShape(SHAPE targetShape);
+
+    int getSize();
+    void clear();
+    
     std::vector<Object> getArray();
 };
 

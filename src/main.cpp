@@ -11,80 +11,9 @@ using namespace std;
 
 #define SCREEN_WIDTH 900
 #define SCREEN_HEIGHT 600
-
-int shapeListSize(ShapeList<Object> shapeList){
-    int i=0;
-    for (Object elem : shapeList.getArray())
-    {
-        i++;
-    }
-    return i;
-}
+#define MAX_ENTITIES_GAMEOVER 20
 
 int main(int argc, char* argv[]) {
-
-
-    // while (true) {
-    //     system("cls");
-    //     shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
-    //     shapeList.display();
-
-
-    //     if (_kbhit()) {
-    //         char ch = _getch();
-    //         if (ch == 'x') {
-    //             break;
-    //         } else {
-    //             ch = _getch();
-
-    //             switch (ch) {
-
-    //                 case 75: // Left arrow key
-    //                     shapeList.addRight(Object::random());
-
-    //                     break;
-
-    //                 case 77: // Right arrow key
-    //                     shapeList.addLeft(Object::random());
-
-    //                     break;
-
-
-    //                 case 'q':
-    //                     shapeList.shiftColor(RED);
-    //                     break;
-    //                 case 'w':
-    //                     shapeList.shiftColor(GREEN);
-    //                     break;
-    //                 case 'e':
-    //                     shapeList.shiftColor(BLUE);
-    //                     break;
-    //                 case 'r':
-    //                     shapeList.shiftColor(YELLOW);
-    //                     break;
-    //                 case 'a':
-    //                     shapeList.shiftShape(RECTANGLE);
-    //                     break;
-    //                 case 's':
-    //                     shapeList.shiftShape(CIRCLE);
-    //                     break;
-    //                 case 'd':
-    //                     shapeList.shiftShape(TRIANGLE);
-    //                     break;
-    //                 case 'f':
-    //                     shapeList.shiftShape(DIAMOND);
-    //                     break;
-
-
-    //                 default:
-    //                     continue;
-                    
-    //                 }
-
-
-    //         }
-    //     }
-    // }
 
     bool gameIsRunning = true;
     SDL_Event event;
@@ -103,9 +32,6 @@ int main(int argc, char* argv[]) {
     RenderWindow window("SDL2", SCREEN_WIDTH, SCREEN_HEIGHT);  
     window.loadTexture();
     ShapeList<Object> shapeList;
-
-// shapeList is accessible here with its last value from the loop
-
     
     int gap=0;
 
@@ -122,8 +48,8 @@ int main(int argc, char* argv[]) {
     int firstTime = 1;
     while (gameIsRunning)
     {
-        if(firstTime){
-            shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
+        if(firstTime)
+        {
             cout<<"Score= "<<shapeList.score<<endl;
             entities.clear();
             gap=0;
@@ -137,7 +63,7 @@ int main(int argc, char* argv[]) {
             entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
             firstTime = 0;
         }
-        if (entities.size() >= 11) {
+        if (entities.size() >= MAX_ENTITIES_GAMEOVER) {
             cout<<"Game Over"<<endl;
             gameIsRunning = false; // Exit the game loop
             break; // Exit the loop immediately
@@ -149,7 +75,6 @@ int main(int argc, char* argv[]) {
                 switch (event.key.keysym.sym) {
                     case SDLK_RIGHT: // Right arrow key
                         shapeList.addRight(suggestion);
-                        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
                         gap=0;
@@ -162,9 +87,9 @@ int main(int argc, char* argv[]) {
                         suggestion = Object::random();
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
+
                     case SDLK_LEFT: // Left arrow key
                         shapeList.addLeft(suggestion);
-                        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
                         gap=0;
@@ -177,9 +102,9 @@ int main(int argc, char* argv[]) {
                         suggestion = Object::random();
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
+
                     case SDLK_q:
                         shapeList.shiftColor(RED);
-                        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
                         gap=0;
@@ -193,7 +118,6 @@ int main(int argc, char* argv[]) {
                         break;
                     case SDLK_w:
                         shapeList.shiftColor(GREEN);
-                        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
                         gap=0;
@@ -207,7 +131,6 @@ int main(int argc, char* argv[]) {
                         break;
                     case SDLK_e:
                         shapeList.shiftColor(BLUE);
-                        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
                         gap=0;
@@ -221,7 +144,6 @@ int main(int argc, char* argv[]) {
                         break;
                     case SDLK_r:
                         shapeList.shiftColor(YELLOW);
-                        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
                         gap=0;
@@ -235,7 +157,6 @@ int main(int argc, char* argv[]) {
                         break;
                     case SDLK_a:
                         shapeList.shiftShape(RECTANGLE);
-                        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
                         gap=0;
@@ -249,7 +170,6 @@ int main(int argc, char* argv[]) {
                         break;
                     case SDLK_s:
                         shapeList.shiftShape(CIRCLE);
-                        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
                         gap=0;
@@ -263,7 +183,6 @@ int main(int argc, char* argv[]) {
                         break;
                     case SDLK_d:
                         shapeList.shiftShape(TRIANGLE);
-                        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
                         gap=0;
@@ -277,7 +196,6 @@ int main(int argc, char* argv[]) {
                         break;
                     case SDLK_f:
                         shapeList.shiftShape(DIAMOND);
-                        shapeList.checkIdenticalShapes(); // check if random generated objects are by chance identical by color or by shape
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
                         gap=0;
@@ -311,4 +229,5 @@ int main(int argc, char* argv[]) {
     IMG_Quit();
     SDL_Quit(); 
     return EXIT_SUCCESS;
+
 }

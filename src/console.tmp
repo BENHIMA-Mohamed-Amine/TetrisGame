@@ -1,0 +1,95 @@
+#include <iostream>
+#include "utils/Colors.hpp"
+#include "utils/CircularLL.hpp"
+#include "ShapeObject.hpp"
+#include "ShapeList.hpp"
+#include <conio.h>
+
+using namespace std;
+
+#define SCREEN_WIDTH 900
+#define SCREEN_HEIGHT 600
+
+int main(int argc, char* argv[]) {
+
+    ShapeList<Object> shapeList;
+    
+    while (true) {
+        shapeList.display();
+
+        if (_kbhit()) {
+            char ch = _getch();
+            if (ch == 'x') {
+                break;
+            } else {
+                ch = _getch();
+
+                switch (ch) {
+
+                    case 75: // Left arrow key
+                        shapeList.addRight(Object::random());
+                        system("cls");
+
+                        break;
+
+                    case 77: // Right arrow key
+                        shapeList.addLeft(Object::random());
+                        system("cls");
+
+                        break;
+
+
+                    case 'q':
+                        shapeList.shiftColor(RED);
+                        system("cls");
+
+                        break;
+                    case 'w':
+                        shapeList.shiftColor(GREEN);
+                        system("cls");
+
+                        break;
+                    case 'e':
+                        shapeList.shiftColor(BLUE);
+                        system("cls");
+
+                        break;
+                    case 'r':
+                        shapeList.shiftColor(YELLOW);
+                        system("cls");
+
+                        break;
+                    case 'a':
+                        shapeList.shiftShape(RECTANGLE);
+                        system("cls");
+
+                        break;
+                    case 's':
+                        shapeList.shiftShape(CIRCLE);
+                        system("cls");
+
+                        break;
+                    case 'd':
+                        shapeList.shiftShape(TRIANGLE);
+                        system("cls");
+
+                        break;
+                    case 'f':
+                        shapeList.shiftShape(DIAMOND);
+                        system("cls");
+
+                        break;
+
+
+                    default:
+                        continue;
+                    
+                    }
+
+
+            }
+        }
+    }
+
+    return 0;
+}

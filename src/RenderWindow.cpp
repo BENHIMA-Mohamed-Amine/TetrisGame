@@ -19,25 +19,25 @@ RenderWindow::RenderWindow(const char* p_title, int p_w, int p_h)
 
 void RenderWindow::loadTexture()
 {
-    textures[0][0] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\RectangleRed.png");
-    textures[0][1] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\CircleRed.png"); 
-    textures[0][2] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\TriangleRed.png"); 
-    textures[0][3] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\DiamondRed.png");
+    textures[0][0] = IMG_LoadTexture(renderer, "./assets/RectangleRed.png");
+    textures[0][1] = IMG_LoadTexture(renderer, "./assets/CircleRed.png"); 
+    textures[0][2] = IMG_LoadTexture(renderer, "./assets/TriangleRed.png"); 
+    textures[0][3] = IMG_LoadTexture(renderer, "./assets/DiamondRed.png");
 
-    textures[1][0] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\RectangleGreen.png"); 
-    textures[1][1] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\CircleGreen.png"); 
-    textures[1][2] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\TriangleGreen.png"); 
-    textures[1][3] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\DiamondGreen.png");
+    textures[1][0] = IMG_LoadTexture(renderer, "./assets/RectangleGreen.png"); 
+    textures[1][1] = IMG_LoadTexture(renderer, "./assets/CircleGreen.png"); 
+    textures[1][2] = IMG_LoadTexture(renderer, "./assets/TriangleGreen.png"); 
+    textures[1][3] = IMG_LoadTexture(renderer, "./assets/DiamondGreen.png");
 
-    textures[2][0] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\RectangleBlue.png"); 
-    textures[2][1] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\CircleBlue.png"); 
-    textures[2][2] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\TriangleBlue.png"); 
-    textures[2][3] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\DiamondBlue.png");
+    textures[2][0] = IMG_LoadTexture(renderer, "./assets/RectangleBlue.png"); 
+    textures[2][1] = IMG_LoadTexture(renderer, "./assets/CircleBlue.png"); 
+    textures[2][2] = IMG_LoadTexture(renderer, "./assets/TriangleBlue.png"); 
+    textures[2][3] = IMG_LoadTexture(renderer, "./assets/DiamondBlue.png");
 
-    textures[3][0] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\RectangleYellow.png"); 
-    textures[3][1] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\CircleYellow.png"); 
-    textures[3][2] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\TriangleYellow.png"); 
-    textures[3][3] = IMG_LoadTexture(renderer, "C:\\Users\\medab\\OneDrive\\Documents\\Cursus-Academic\\ENSET\\Structure de donnee\\TetrisGame\\assets\\DiamondYellow.png");
+    textures[3][0] = IMG_LoadTexture(renderer, "./assets/RectangleYellow.png"); 
+    textures[3][1] = IMG_LoadTexture(renderer, "./assets/CircleYellow.png"); 
+    textures[3][2] = IMG_LoadTexture(renderer, "./assets/TriangleYellow.png"); 
+    textures[3][3] = IMG_LoadTexture(renderer, "./assets/DiamondYellow.png");
 
     if(textures[0][0] == nullptr)
         cerr<<"can't load a image "<<  SDL_GetError()<<endl;
