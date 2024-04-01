@@ -13,6 +13,17 @@ using namespace std;
 #define SCREEN_HEIGHT 600
 #define MAX_ENTITIES_GAMEOVER 20
 
+void load_entities(ShapeList<Object>& shapeList, vector<Entity>& entities, RenderWindow& window)
+{
+    int gap=0;
+    for (Object elem : shapeList.getArray())
+    {
+        int color = elem.getColor(), shape = elem.getShape();
+        entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
+        gap += 80;
+    }
+}
+
 int main(int argc, char* argv[]) {
 
     bool gameIsRunning = true;
@@ -32,37 +43,14 @@ int main(int argc, char* argv[]) {
     RenderWindow window("SDL2", SCREEN_WIDTH, SCREEN_HEIGHT);  
     window.loadTexture();
     ShapeList<Object> shapeList;
-    
-    int gap=0;
 
     vector<Entity> entities;
-    for (Object elem : shapeList.getArray())
-    {
-        int color = elem.getColor(), shape = elem.getShape();
-        entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-        gap += 80;
-    }
+    load_entities(shapeList, entities, window);
+    
     Object* suggestion = Object::random();
     entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
-    
-    int firstTime = 1;
     while (gameIsRunning)
     {
-        if(firstTime)
-        {
-            cout<<"Score= "<<shapeList.score<<endl;
-            entities.clear();
-            gap=0;
-            for (Object elem : shapeList.getArray())
-            {
-                int color = elem.getColor(), shape = elem.getShape();
-                entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-                gap += 80;
-            }
-            suggestion = Object::random();
-            entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
-            firstTime = 0;
-        }
         if (entities.size() >= MAX_ENTITIES_GAMEOVER) {
             cout<<"Game Over"<<endl;
             gameIsRunning = false; // Exit the game loop
@@ -77,13 +65,7 @@ int main(int argc, char* argv[]) {
                         shapeList.addRight(suggestion);
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
-                        gap=0;
-                        for (Object elem : shapeList.getArray())
-                        {
-                            int color = elem.getColor(), shape = elem.getShape();
-                            entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-                            gap += 80;
-                        }
+                        load_entities(shapeList, entities, window);
                         suggestion = Object::random();
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
@@ -92,13 +74,7 @@ int main(int argc, char* argv[]) {
                         shapeList.addLeft(suggestion);
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
-                        gap=0;
-                        for (Object elem : shapeList.getArray())
-                        {
-                            int color = elem.getColor(), shape = elem.getShape();
-                            entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-                            gap += 80;
-                        }
+                        load_entities(shapeList, entities, window);
                         suggestion = Object::random();
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
@@ -107,104 +83,56 @@ int main(int argc, char* argv[]) {
                         shapeList.shiftColor(RED);
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
-                        gap=0;
-                        for (Object elem : shapeList.getArray())
-                        {
-                            int color = elem.getColor(), shape = elem.getShape();
-                            entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-                            gap += 80;
-                        }
+                        load_entities(shapeList, entities, window);
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
                     case SDLK_w:
                         shapeList.shiftColor(GREEN);
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
-                        gap=0;
-                        for (Object elem : shapeList.getArray())
-                        {
-                            int color = elem.getColor(), shape = elem.getShape();
-                            entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-                            gap += 80;
-                        }
+                        load_entities(shapeList, entities, window);
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
                     case SDLK_e:
                         shapeList.shiftColor(BLUE);
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
-                        gap=0;
-                        for (Object elem : shapeList.getArray())
-                        {
-                            int color = elem.getColor(), shape = elem.getShape();
-                            entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-                            gap += 80;
-                        }
+                        load_entities(shapeList, entities, window);
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
                     case SDLK_r:
                         shapeList.shiftColor(YELLOW);
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
-                        gap=0;
-                        for (Object elem : shapeList.getArray())
-                        {
-                            int color = elem.getColor(), shape = elem.getShape();
-                            entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-                            gap += 80;
-                        }
+                        load_entities(shapeList, entities, window);
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
                     case SDLK_a:
                         shapeList.shiftShape(RECTANGLE);
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
-                        gap=0;
-                        for (Object elem : shapeList.getArray())
-                        {
-                            int color = elem.getColor(), shape = elem.getShape();
-                            entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-                            gap += 80;
-                        }
+                        load_entities(shapeList, entities, window);
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
                     case SDLK_s:
                         shapeList.shiftShape(CIRCLE);
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
-                        gap=0;
-                        for (Object elem : shapeList.getArray())
-                        {
-                            int color = elem.getColor(), shape = elem.getShape();
-                            entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-                            gap += 80;
-                        }
+                        load_entities(shapeList, entities, window);
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
                     case SDLK_d:
                         shapeList.shiftShape(TRIANGLE);
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
-                        gap=0;
-                        for (Object elem : shapeList.getArray())
-                        {
-                            int color = elem.getColor(), shape = elem.getShape();
-                            entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-                            gap += 80;
-                        }
+                        load_entities(shapeList, entities, window);
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
                     case SDLK_f:
                         shapeList.shiftShape(DIAMOND);
                         cout<<"Score= "<<shapeList.score<<endl;
                         entities.clear();
-                        gap=0;
-                        for (Object elem : shapeList.getArray())
-                        {
-                            int color = elem.getColor(), shape = elem.getShape();
-                            entities.push_back(Entity(100+gap, 250, window.getTexture(color, shape), color, shape));
-                            gap += 80;
-                        }
+                        load_entities(shapeList, entities, window);
                         entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
                         break;
                     case SDLK_x:

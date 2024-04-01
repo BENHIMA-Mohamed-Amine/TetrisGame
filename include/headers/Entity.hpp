@@ -20,6 +20,7 @@ class Entity{
         double getY(){return y;} 
         SDL_Rect getCurrentFrame(){return currentFrame;}
         SDL_Texture* getTexture(){return texture;} 
+        
     private:
         double x, y;
         SDL_Rect currentFrame;
