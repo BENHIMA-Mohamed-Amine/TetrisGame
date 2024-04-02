@@ -41,6 +41,8 @@ void RenderWindow::loadTexture()
 
     if(textures[0][0] == nullptr)
         cerr<<"can't load a image "<<  SDL_GetError()<<endl;
+
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // Set the draw color to white
 }
 
 SDL_Texture* RenderWindow::getTexture(int i, int j)
