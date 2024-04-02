@@ -51,6 +51,12 @@ int main(int argc, char* argv[]) {
     entities.push_back(Entity(90, 100, window.getTexture(suggestion->getColor(), suggestion->getShape()), suggestion->getColor(), suggestion->getShape()));
     while (gameIsRunning)
     {
+        if(shapeList.getSize() > 2)
+        {
+            shapeList.checkIdenticalShapesLeft();
+            shapeList.checkIdenticalShapesRight();
+            shapeList.checkIdenticalShapesMiddle();
+        }
         if (entities.size() >= MAX_ENTITIES_GAMEOVER) {
             cout<<"Game Over"<<endl;
             gameIsRunning = false; // Exit the game loop
